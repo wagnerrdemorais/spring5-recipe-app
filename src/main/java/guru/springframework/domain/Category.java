@@ -7,7 +7,6 @@ import java.util.Set;
 
 @Data
 @EqualsAndHashCode(exclude = {"recipes"})
-@ToString(exclude = "recipe")
 @Entity
 public class Category {
 

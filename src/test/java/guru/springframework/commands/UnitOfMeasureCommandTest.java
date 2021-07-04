@@ -1,5 +1,6 @@
-package guru.springframework.controllers;
+package guru.springframework.commands;
 
+import guru.springframework.controllers.RecipeController;
 import guru.springframework.domain.Recipe;
 import guru.springframework.services.RecipeService;
 import org.junit.Before;
@@ -14,25 +15,22 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-public class RecipeControllerTest {
-
-    public RecipeControllerTest(){};
+class RecipeControllerTest {
 
     @Mock
     RecipeService recipeService;
 
+    @Mock
     RecipeController controller;
 
     @Before
-    public void setUp() throws Exception {
+    public void setup() throws Exception {
         MockitoAnnotations.initMocks(this);
-
         controller = new RecipeController(recipeService);
     }
 
     @Test
     public void testGetRecipe() throws Exception {
-
         Recipe recipe = new Recipe();
         recipe.setId(1L);
 
@@ -45,4 +43,9 @@ public class RecipeControllerTest {
                 .andExpect(view().name("recipe/show"))
                 .andExpect(model().attributeExists("recipe"));
     }
+}
+
+
+public class UnitOfMeasureCommandTest {
+
 }
